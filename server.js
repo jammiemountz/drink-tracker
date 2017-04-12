@@ -1,11 +1,14 @@
 const express = require('express')
 const app = express()
+const path = require('path')
 const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
+const shortid = require ('shortid');
 
 var db
 
-MongoClient.connect('mongodb://zellwk:zellwk@ds047955.mongolab.com:47955/star-wars-quotes', (err, database) => {
+// MongoClient.connect('mongodb://zellwk:zellwk@ds047955.mongolab.com:47955/star-wars-quotes', (err, database) => {
+MongoClient.connect('mongodb://127.0.0.1:27017', (err, database) => {
   if (err) return console.log(err)
   db = database
   app.listen(process.env.PORT || 3000, () => {
@@ -13,45 +16,57 @@ MongoClient.connect('mongodb://zellwk:zellwk@ds047955.mongolab.com:47955/star-wa
   })
 })
 
-app.set('view engine', 'ejs')
+// app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  db.collection('quotes').find().toArray((err, result) => {
-    if (err) return console.log(err)
-    res.render('index.ejs', {quotes: result})
-  })
+  res.sendFile(path.join(__dirname + '/index.html'));
 })
 
-app.post('/quotes', (req, res) => {
-  db.collection('quotes').save(req.body, (err, result) => {
+app.get('/drinks', (req, res) => {
+  db.collection('drinks').find().toArray((err, result) => {
     if (err) return console.log(err)
-    console.log('saved to database')
-    res.redirect('/')
-  })
-})
-
-app.put('/quotes', (req, res) => {
-  db.collection('quotes')
-  .findOneAndUpdate({name: 'Yoda'}, {
-    $set: {
-      name: req.body.name,
-      quote: req.body.quote
-    }
-  }, {
-    sort: {_id: -1},
-    upsert: true
-  }, (err, result) => {
-    if (err) return res.send(err)
     res.send(result)
   })
 })
 
-app.delete('/quotes', (req, res) => {
-  db.collection('quotes').findOneAndDelete({name: req.body.name}, (err, result) => {
-    if (err) return res.send(500, err)
-    res.send('A darth vadar quote got deleted')
+app.post('/drinks', (req, res) => {
+  console.log(req.body)
+  db.collection('drinks').save(req.body, (err, result) => {
+    if (err) return console.log(err)
+    console.log('saved to database')
+    db.collection('drinks').find().toArray((err, result) => {
+      if (err) return console.log(err)
+      res.send(result)
+    })
   })
+})
+
+// app.put('/drinks', (req, res) => {
+//   db.collection('drinks')
+//   .findOneAndUpdate({name: 'Yoda'}, {
+//     $set: {
+//       type: req.body.type,
+//       date: req.body.date
+//     }
+//   }, {
+//     sort: {_id: -1},
+//     upsert: true
+//   }, (err, result) => {
+//     if (err) return res.send(err)
+//     res.send(result)
+//   })
+// })
+//
+// app.delete('/drinks', (req, res) => {
+//   db.collection('quotes').findOneAndDelete({name: req.body.name}, (err, result) => {
+//     if (err) return res.send(500, err)
+//     res.send('A darth vadar quote got deleted')
+//   })
+// })
+
+app.delete('/allDrinks', (req, res) => {
+
 })

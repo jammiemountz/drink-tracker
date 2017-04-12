@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>MY APP</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  May Node and Express be with you.
 
-  <form action="/items" method="POST">
-    <input type="text" placeholder="name" name="name">
-    <input type="text" placeholder="quote" name="quote">
-    <button type="submit">Submit</button>
-  </form>
+  <div class="page">
+    <div id="js-log-wine" data-type="wine" class="item wine"></div>
+    <div id="js-log-beer" data-type="beer" class="item beer"></div>
+    <div id="js-log-mixed" data-type="mixed" class="item mixed"></div>
+    <div id="js-log-mood" data-type="mood" class="item mood"></div>
+  </div>
 
+  <div id="js-log"></div>
+
+  <script src="main.js"></script>
 </body>
 </html>

@@ -1,34 +1,72 @@
 /* globals fetch */
-var update = document.getElementById('update')
-var del = document.getElementById('delete')
+var wine = document.getElementById('js-log-wine')
+var beer = document.getElementById('js-log-beer')
+var mixed = document.getElementById('js-log-mixed')
+var mood = document.getElementById('js-log-mood')
+var log = document.getElementById('js-log')
 
-update.addEventListener('click', function () {
-  fetch('quotes', {
-    method: 'put',
+beer.addEventListener('click', eventListener.bind('beer'))
+wine.addEventListener('click', eventListener.bind('wine'))
+mixed.addEventListener('click', eventListener.bind('mixed'))
+mood.addEventListener('click', eventListener.bind('mood'))
+
+// var del = document.getElementById('delete')
+
+getDrinks()
+
+function getDrinks() {
+  fetch('drinks', {
+    method: 'get',
+    headers: {'Content-Type': 'application/json'}
+  }).then(response => {
+    return response.json();
+  })
+  .then(data => {
+    appendToLog(data)
+  })
+}
+
+function eventListener(e) {
+  fetch('drinks', {
+    method: 'post',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      'name': 'Darth Vader',
-      'quote': 'I find your lack of faith disturbing.'
+      'type': e.target.dataset.type,
+      'date': new Date(),
     })
   })
   .then(response => {
-    if (response.ok) return response.json()
+    if (response.ok) {
+      return response.json()
+    }
   })
   .then(data => {
-    console.log(data)
+    appendToLog(data)
   })
-})
+}
 
-del.addEventListener('click', function () {
-  fetch('quotes', {
-    method: 'delete',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      'name': 'Darth Vader'
-    })
-  }).then(function (response) {
-    window.location.reload()
+function appendToLog(data) {
+  while (log.hasChildNodes()) {
+    log.removeChild(log.lastChild);
+  }
+  data.map(function(item) {
+    var p = document.createElement('p')
+    p.innerHTML = item.type
+    log.prepend(p)
   })
-})
+}
+
+
+// del.addEventListener('click', function () {
+//   fetch('quotes', {
+//     method: 'delete',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify({
+//       'name': 'Darth Vader'
+//     })
+//   }).then(function (response) {
+//     window.location.reload()
+//   })
+// })

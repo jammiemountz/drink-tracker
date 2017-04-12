@@ -1,15 +1,29 @@
-html {
-  font-size: 20px;
+.page {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.quote {
-  margin-top: 0.5em;
+.item {
+  width: 50%;
+  height: 200px;
+  cursor: pointer;
 }
 
-.quote > span:first-child {
-  font-weight: bold
+.wine {
+  background-color: red;
 }
 
-.quote > span:first-child:after {
-  content:':'
+.beer {
+  background-color: yellow;
+}
+
+.mixed {
+  background-color: orange;
+}
+
+.mood {
+  background-color: blue;
 }
