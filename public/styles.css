@@ -1,29 +1,65 @@
+html {
+  height: 100%;
+  width: 100%;
+  position: abolute;
+  margin: 0;
+  font-family: sans-serif;
+}
+
 .page {
   width: 100%;
-  max-width: 700px;
+  max-width: 310px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.itemContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.log {
+  max-width: 310px;
+  margin: 20px auto 0 auto;
+}
+
+.delete-all {
+  display: block;
+  margin: 0 auto;
+}
+
+.label {
+  color: white;
+  text-transform: uppercase;
+  font-size: 44px;
+  transform: rotate(20deg);
+  text-align: center;
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 .item {
-  width: 50%;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .wine {
-  background-color: red;
+  background-color: #17C37B;
 }
 
 .beer {
-  background-color: yellow;
+  background-color: #E88565;
 }
 
 .mixed {
-  background-color: orange;
+  background-color: #055a5b;
 }
 
 .mood {
-  background-color: blue;
+  background-color: #C6D7C7;
 }
