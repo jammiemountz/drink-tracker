@@ -3,7 +3,7 @@
 */
 
 function parse(iso8601) {
-  let s = iso8601;
+  var s = iso8601;
   s = s.replace(/\.\d+/, ''); // remove milliseconds
   s = s.replace(/-/, '/').replace(/-/, '/');
   /* eslint-disable */
@@ -14,7 +14,7 @@ function parse(iso8601) {
   return new Date(s);
 }
 
-const settings = {
+var settings = {
   refreshMillis: 60000,
   allowPast: true,
   allowFuture: false,
@@ -44,25 +44,25 @@ const settings = {
 };
 
 function inWords(distanceMillis) {
-  const difference = new Date() - distanceMillis;
+  var difference = new Date() - distanceMillis;
 
-  const strings = settings.strings;
-  const prefix = strings.prefixAgo;
-  const suffix = strings.suffixAgo;
+  var strings = settings.strings;
+  var prefix = strings.prefixAgo;
+  var suffix = strings.suffixAgo;
 
-  const seconds = Math.abs(difference) / 1000;
-  const minutes = seconds / 60;
-  const hours = minutes / 60;
-  const days = hours / 24;
-  const years = days / 365;
+  var seconds = Math.abs(difference) / 1000;
+  var minutes = seconds / 60;
+  var hours = minutes / 60;
+  var days = hours / 24;
+  var years = days / 365;
 
   function substitute(stringOrFunction, number) {
-    const string = (typeof stringOrFunction === 'function') ? stringOrFunction(number, difference) : stringOrFunction;
-    const value = (strings.numbers && strings.numbers[number]) || number;
+    var string = (typeof stringOrFunction === 'function') ? stringOrFunction(number, difference) : stringOrFunction;
+    var value = (strings.numbers && strings.numbers[number]) || number;
     return string.replace(/%d/i, value);
   }
   /* eslint-disable */
-  const words = seconds < 45 && substitute(strings.seconds, Math.round(seconds)) ||
+  var words = seconds < 45 && substitute(strings.seconds, Math.round(seconds)) ||
     seconds < 90 && substitute(strings.minute, 1) ||
     minutes < 45 && substitute(strings.minutes, Math.round(minutes)) ||
     minutes < 90 && substitute(strings.hour, 1) ||
@@ -75,7 +75,7 @@ function inWords(distanceMillis) {
     substitute(strings.years, Math.round(years));
   /* eslint-enable */
 
-  let separator = strings.wordSeparator || '';
+  var separator = strings.wordSeparator || '';
   if (strings.wordSeparator === undefined) {
     separator = ' ';
   }
