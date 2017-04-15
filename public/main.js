@@ -19,7 +19,7 @@ function appendToLog(data) {
     var deleteIcon = $('<div class="deleteIcon"></div>');
     deleteIcon.on('click', function() {
       var body = JSON.stringify({
-        id: item._id,
+        id: item.id,
       })
       drinkTracker.storage.delete(body, emptyOne.bind(null, item.id))
     })
