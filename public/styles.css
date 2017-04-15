@@ -63,3 +63,9 @@ html {
 .mood {
   background-color: #C6D7C7;
 }
+
+.deleteIcon {
+  height: 20px;
+  width: 20px;
+  background-color: red;
+}

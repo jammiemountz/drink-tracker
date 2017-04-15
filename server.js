@@ -3,6 +3,7 @@ const app = express()
 const path = require('path')
 const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
+const ObjectId = require('mongodb').ObjectID;
 const shortid = require ('shortid');
 
 var db
@@ -27,6 +28,13 @@ app.get('/', (req, res) => {
 })
 
 app.get('/drinks', (req, res) => {
+  db.collection('drinks').find().toArray((err, result) => {
+    if (err) return console.log(err)
+    res.send(result)
+  })
+})
+
+app.get('/all', (req, res) => {
   db.collection('drinks').find().toArray((err, result) => {
     if (err) return console.log(err)
     res.send(result)
@@ -69,9 +77,16 @@ app.post('/drinks', (req, res) => {
 // })
 
 app.delete('/deleteAll', (req, res) => {
-    db.collection('drinks').remove({}, (err, result) => {
-      if (err) return res.send(500, err)
-      res.send({message: 'Success'})
-    })
+  db.collection('drinks').remove({}, (err, result) => {
+    if (err) return res.send(500, err)
+    res.send({message: 'Success'})
+  })
+})
 
+app.delete('/deleteOne', (req, res) => {
+  var id = req.body.id.toString();
+  db.collection('drinks').remove({"_id": ObjectId(id)}, (err, result) => {
+    if (err) return res.send(500, err)
+    res.send({message: 'Success'})
+  })
 })
