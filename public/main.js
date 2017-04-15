@@ -4,7 +4,10 @@ var checkDrinks = false;
 function appendToLog(data) {
   $('#js-log').empty();
   data.map(function(item, index) {
-    if ( data[index-1] && !data[index-1].date.isSame(item.date, 'day') ) {
+    if (
+      !moment().isSame(item.date, 'day') ||
+      (data[index-1] && !data[index-1].date.isSame(item.date, 'day'))
+    ) {
       var newDay = document.createElement('p');
       newDay.innerHTML = data[index-1].date.format("ddd, MMM Do, h:mm a");
       $('#js-log').prepend(newDay)
