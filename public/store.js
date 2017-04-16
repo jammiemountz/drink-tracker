@@ -85,6 +85,12 @@
 		});
 	}
 
+	Store.prototype.getTodayDrinks = function() {
+		return this._items.filter(function(index, item) {
+			return index.date.isSame(moment(), 'day');
+		});
+	}
+
 	// Export to window
 	window.app = window.app || {};
 	window.app.Store = Store;

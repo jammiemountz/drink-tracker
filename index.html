@@ -3,28 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>MY APP</title>
+  <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="home.css">
 </head>
 <body>
+  <div class="app" id="app">
+    <div id="js-home" class="home">
+      <div id="js-list"></div>
+    </div>
 
-  <div class="page">
-    <div id="js-log-wine" data-type="wine" class="item wine">
-      <p class="label">Wine</p>
+    <div class="amountSection" id="js-amountSection">
+      <p id="js-amount" class="amount">You've had <span id="js-amount-span"></span>.</p>
     </div>
-    <div id="js-log-beer" data-type="beer" class="item beer">
-      <p class="label">Beer</p>
-    </div>
-    <div id="js-log-mixed" data-type="mixed" class="item mixed">
-      <p class="label">Mixed</p>
-    </div>
-    <div id="js-log-mood" data-type="mood" class="item mood">
-      <p class="label">Feels</p>
-    </div>
-  </div>
 
-  <div class="log">
-    <button id="js-delete-all" class="delete-all">Delete All</button>
-    <div id="js-log"></div>
+    <div class="log">
+      <button id="js-delete-all" class="delete-all">Delete All</button>
+      <div id="js-log"></div>
+    </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
@@ -32,6 +28,7 @@
   <script src="timeago.js"></script>
   <script src="store.js"></script>
   <script src="model.js"></script>
+  <script src="view.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

@@ -1,0 +1,114 @@
+.home {
+  padding-top: 15px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.amountSection {
+  height: 20vh;
+}
+
+.log {
+  height: 80vh;
+}
+
+.app {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  top: 0;
+  transition: all 0.3s ease;
+}
+
+.app.scrollUp {
+  top: -80vh;
+  overflow: visible;
+}
+
+.item {
+  background-color: white;
+  margin: 0 15px 15px 15px;
+  padding: 0 20px;
+  min-height: 100px;
+  -webkit-box-shadow: 2px 4px 14px -1px rgba(199,199,199,1);
+  -moz-box-shadow: 2px 4px 14px -1px rgba(199,199,199,1);
+  box-shadow: 2px 4px 14px -1px rgba(199,199,199,1);
+  display: flex;
+  align-items: center;
+}
+
+.itemLabel {
+  margin: 0;
+  color: #828282;
+  text-transform: capitalize;
+}
+
+.circle {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+.beer-background {
+  background-color: #FEFDD9;
+}
+
+.wine-background {
+  background-color: #FFE0E0;
+}
+
+.mixed-background {
+  background-color: #D0F5E0;
+}
+
+.shot-background {
+  background-color: #D0F1F5;
+}
+
+.feels-background {
+  background-color: #F1F1F1;
+}
+
+.image {
+  height: 65px;
+  width: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  left: -15px;
+}
+
+.image.beer-image {
+  height: 60px;
+  background-image: url('./img/beer.svg');
+}
+
+.image.wine-image {
+  background-image: url('./img/wine.svg');
+}
+
+.image.mixed-image {
+  height: 70px;
+  top: -5px;
+  background-image: url('./img/mixed.svg');
+}
+
+.image.shot-image {
+  height: 30px;
+  top: 13px;
+  background-image: url('./img/shot.svg');
+}
+
+.image.feels-image {
+  top: 10px;
+  left: -23px;
+  background-image: url('./img/feels.svg');
+}
+
+.amount {
+  height: 150px;
+  text-align: center;
+  line-height: 150px;
+}

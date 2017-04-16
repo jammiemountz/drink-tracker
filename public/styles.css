@@ -1,19 +1,22 @@
-html {
+body {
   height: 100%;
   width: 100%;
-  position: abolute;
+  position: absolute;
   margin: 0;
+  padding: 0;
   font-family: sans-serif;
+  box-sizing: border-box;
 }
 
-.page {
-  width: 100%;
-  max-width: 510px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  justify-content: space-between;
+.app {
+  background: rgba(237,251,248,1);
+  background: -moz-linear-gradient(top, rgba(237,251,248,1) 0%, rgba(255,255,255,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(237,251,248,1)), color-stop(100%, rgba(255,255,255,1)));
+  background: -webkit-linear-gradient(top, rgba(237,251,248,1) 0%, rgba(255,255,255,1) 100%);
+  background: -o-linear-gradient(top, rgba(237,251,248,1) 0%, rgba(255,255,255,1) 100%);
+  background: -ms-linear-gradient(top, rgba(237,251,248,1) 0%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(to bottom, rgba(237,251,248,1) 0%, rgba(255,255,255,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edfbf8', endColorstr='#ffffff', GradientType=0 );
 }
 
 .itemContainer {
@@ -41,31 +44,13 @@ html {
   pointer-events: none;
 }
 
-.item {
-  width: 250px;
-  height: 250px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.wine {
-  background-color: #17C37B;
-}
-
-.beer {
-  background-color: #E88565;
-}
-
-.mixed {
-  background-color: #055a5b;
-}
-
-.mood {
-  background-color: #C6D7C7;
-}
-
 .deleteIcon {
   height: 20px;
   width: 20px;
   background-color: red;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 100;
 }
