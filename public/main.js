@@ -45,10 +45,6 @@ $( document ).ready(function() {
   };
 
   function makeModels(data) {
-    drinkTracker.model.create({
-      type: 'test',
-      date: moment().startOf('week'),
-    })
     $.map(data, function(item) {
       drinkTracker.model.create(item);
     });
