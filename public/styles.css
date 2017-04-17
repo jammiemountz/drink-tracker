@@ -1,10 +1,20 @@
+@font-face {
+  font-family: 'OpenSans-Light';
+  src: url('./font/OpenSans-Light.ttf');
+}
+
+@font-face {
+  font-family: 'OpenSans-Regular';
+  src: url('./font/OpenSans-Regular.ttf');
+}
+
 body {
   height: 100%;
   width: 100%;
   position: absolute;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: OpenSans-Light, sans-serif;
   box-sizing: border-box;
 }
 
@@ -17,16 +27,6 @@ body {
   background: -ms-linear-gradient(top, rgba(237,251,248,1) 0%, rgba(255,255,255,1) 100%);
   background: linear-gradient(to bottom, rgba(237,251,248,1) 0%, rgba(255,255,255,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edfbf8', endColorstr='#ffffff', GradientType=0 );
-}
-
-.itemContainer {
-  display: flex;
-  justify-content: space-between;
-}
-
-.log {
-  max-width: 310px;
-  margin: 20px auto 0 auto;
 }
 
 .delete-all {
@@ -45,9 +45,13 @@ body {
 }
 
 .deleteIcon {
-  height: 20px;
-  width: 20px;
-  background-color: red;
+  height: 15px;
+  width: 15px;
+  margin: 10px 30px 0;
+  cursor: pointer;
+  background-image: url('./img/close.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 h3 {

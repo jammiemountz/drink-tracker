@@ -6,6 +6,77 @@
   justify-content: space-between;
 }
 
+#js-log {
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dateCard {
+  background-color: white;
+  margin: 0 15px 15px 15px;
+  min-height: 100px;
+  -webkit-box-shadow: 2px 4px 14px -1px rgba(199,199,199,1);
+  -moz-box-shadow: 2px 4px 14px -1px rgba(199,199,199,1);
+  box-shadow: 2px 4px 14px -1px rgba(199,199,199,1);
+  display: flex;
+  flex-direction: column;
+}
+
+.dayCardDate {
+  margin: 0;
+  height: 60px;
+  line-height: 60px;
+  padding-left: 60px;
+  color: white;
+  font-size: 18px;
+}
+
+.dayCardDate.date-heavy {
+  background: rgba(238,147,94,1);
+  background: -moz-linear-gradient(left, rgba(238,147,94,1) 0%, rgba(255,206,72,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(238,147,94,1)), color-stop(100%, rgba(255,206,72,1)));
+  background: -webkit-linear-gradient(left, rgba(238,147,94,1) 0%, rgba(255,206,72,1) 100%);
+  background: -o-linear-gradient(left, rgba(238,147,94,1) 0%, rgba(255,206,72,1) 100%);
+  background: -ms-linear-gradient(left, rgba(238,147,94,1) 0%, rgba(255,206,72,1) 100%);
+  background: linear-gradient(to right, rgba(238,147,94,1) 0%, rgba(255,206,72,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee935e', endColorstr='#ffce48', GradientType=1 );
+}
+
+.dayCardDate.date-light {
+  background: rgba(64,198,191,1);
+  background: -moz-linear-gradient(left, rgba(64,198,191,1) 0%, rgba(97,255,142,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(64,198,191,1)), color-stop(100%, rgba(97,255,142,1)));
+  background: -webkit-linear-gradient(left, rgba(64,198,191,1) 0%, rgba(97,255,142,1) 100%);
+  background: -o-linear-gradient(left, rgba(64,198,191,1) 0%, rgba(97,255,142,1) 100%);
+  background: -ms-linear-gradient(left, rgba(64,198,191,1) 0%, rgba(97,255,142,1) 100%);
+  background: linear-gradient(to right, rgba(64,198,191,1) 0%, rgba(97,255,142,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40c6bf', endColorstr='#61ff8e', GradientType=1 );
+}
+
+.dayCardDate.date-moderate {
+  background: rgba(64,108,198,1);
+  background: -moz-linear-gradient(left, rgba(64,108,198,1) 0%, rgba(70,232,235,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(64,108,198,1)), color-stop(100%, rgba(70,232,235,1)));
+  background: -webkit-linear-gradient(left, rgba(64,108,198,1) 0%, rgba(70,232,235,1) 100%);
+  background: -o-linear-gradient(left, rgba(64,108,198,1) 0%, rgba(70,232,235,1) 100%);
+  background: -ms-linear-gradient(left, rgba(64,108,198,1) 0%, rgba(70,232,235,1) 100%);
+  background: linear-gradient(to right, rgba(64,108,198,1) 0%, rgba(70,232,235,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#406cc6', endColorstr='#46e8eb', GradientType=1 );
+}
+
+.dayCardDate.date-empty {
+  background: rgba(178,193,193,1);
+  background: -moz-linear-gradient(left, rgba(178,193,193,1) 0%, rgba(178,193,193,0) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(178,193,193,1)), color-stop(100%, rgba(178,193,193,0)));
+  background: -webkit-linear-gradient(left, rgba(178,193,193,1) 0%, rgba(178,193,193,0) 100%);
+  background: -o-linear-gradient(left, rgba(178,193,193,1) 0%, rgba(178,193,193,0) 100%);
+  background: -ms-linear-gradient(left, rgba(178,193,193,1) 0%, rgba(178,193,193,0) 100%);
+  background: linear-gradient(to right, rgba(178,193,193,1) 0%, rgba(178,193,193,0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2c1c1', endColorstr='#b2c1c1', GradientType=1 );
+}
+
 .amountSection {
   height: 20vh;
 }
@@ -27,6 +98,24 @@
   overflow: visible;
 }
 
+.itemContainer {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  justify-content: space-between;
+}
+
+.itemContainerLeft,
+.itemContainerRight {
+  display: flex;
+}
+
+.itemDecoration {
+  width: 40px;
+  height: 15px;
+  margin-right: 20px;
+}
+
 .item {
   background-color: white;
   margin: 0 15px 15px 15px;
@@ -43,6 +132,12 @@
   margin: 0;
   color: #828282;
   text-transform: capitalize;
+  margin-right: 20px;
+}
+
+.itemLabelTime {
+  color: #828282;
+  font-size: 12px;
 }
 
 .circle {

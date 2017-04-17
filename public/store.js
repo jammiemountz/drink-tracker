@@ -8,7 +8,7 @@
       all: '/all'
     }
 		this._checkDeleteAll = false;
-		this._items = [];
+		this._items = {};
 	}
 
 	Store.prototype.find = function (query, callback) {
@@ -44,12 +44,28 @@
 
 
 	Store.prototype.delete = function (updateData, callback, error) {
+		console.log('deling')
     var request = new XMLHttpRequest();
     var uri = '/deleteOne';
+		var that = this;
     request.open('DELETE', uri, true);
     request.setRequestHeader("Content-type", "application/json");
     request.onload = function(data) {
-      callback();
+			that.removeOne(JSON.parse(updateData).id)
+      callback(that._items);
+			// MOVE TO CONTROLLER
+			// solves bug with losing click handlers on delete
+			$.each($('.deleteIcon'), function(index, deleteIcon) {
+				$(deleteIcon).on('click', function(e) {
+					var body = JSON.stringify({
+						id: e.target.dataset.id,
+					})
+					window.drinkTracker.storage.delete(
+						body,
+						window.drinkTracker.view.renderLog.bind(drinkTracker.view)
+					);
+				})
+			})
     };
     request.onerror = error || function(){};
     request.send(updateData);
@@ -72,23 +88,29 @@
 	};
 
 	Store.prototype.store = function(item) {
-		this._items.push(item);
+		var dayOfItem = item.date.format('L')
+		if (this._items[dayOfItem]) {
+			this._items[dayOfItem].push(item);
+		} else {
+			this._items[dayOfItem] = [item]
+		}
 	}
 
 	Store.prototype.removeAll = function(item) {
-		this._items = [];
+		this._items = {};
 	}
 
 	Store.prototype.removeOne = function(id) {
-		this._items.filter(function(index, item) {
-			return item.id !== id;
+		var that = this;
+		$.each(Object.keys(this._items), function(index, day) {
+			that._items[day] = that._items[day].filter(function(item) {
+				return item.id !== id;
+			});
 		});
 	}
 
 	Store.prototype.getTodayDrinks = function() {
-		return this._items.filter(function(index, item) {
-			return index.date.isSame(moment(), 'day');
-		});
+		return this._items[moment().format('L')];
 	}
 
 	// Export to window
